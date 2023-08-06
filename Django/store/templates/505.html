@@ -1,0 +1,18 @@
+{% extends 'template.html' %}
+
+{% block title %}
+    <title>404</title>
+{% endblock%}
+
+{% block urls %}
+    <a href="/">Каталог</a>
+    <a href="/services">Услуги</a>
+    <a href="/company" class="active">О нас</a>
+    <a href="/contact">Контакты</a>
+{% endblock %}
+
+{% block content %}
+    <h1>500 - Server error</h1>
+    <br>
+    <h4>упс. Похоже произошла ошибка со стороны сервера. Попробуйте позже.</h4>
+{% endblock %}

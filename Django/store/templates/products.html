@@ -1,0 +1,102 @@
+{% extends 'template.html' %}
+
+{% block title %}
+<title>{{ title }}</title>
+{% endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/styles/products.css">
+{% endblock %}
+
+{% block urls %}
+        <a href="/">Каталог</a>
+        <a href="/services">Услуги</a>
+        <a href="/company">О нас</a>
+        <a href="/contact">Контакты</a>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ header }}</h1>
+    <section class="products">
+        <section class="panel">
+            <form action="/products/page-1/{{catalog}}/{{subdirectory}}" method="post" class="options" id="cost-form">
+                <script>
+                    href = String(window.location.href)
+                    if (href.split("/").length - 1 == 7) {
+                        document.querySelector("#cost-form").action += "/"
+                    }  
+                </script>
+                <h4>Цена</h4>
+                <div class="cost-input">
+                    <input name="cost-min" type="number" placeholder="от 1" min="0" value="{{cost_min_render}}"><input name="cost-max" type="number" placeholder="до 4000000" min="0" value="{{cost_max_render}}">
+                </div>
+                <input type="submit" value="применить">
+            </form>
+            <div class="catalogs">
+                {% for catalog in catalogs_list %}
+                    <div class="catalog">
+                        <div class="catalog-catalog">
+                            <a href="/products/page-1/{{catalog.name}}/">
+                                <img src="{{catalog.image}}" alt="">
+                                <h4>{{ catalog.render_name }}</h4>
+                            </a>
+                            <button onclick="openCloseSubdirectories({{ forloop.counter }})">
+                                <img src="/static/images/arrow-down.svg" alt="" id="image-{{ forloop.counter }}">
+                            </button>
+                        </div>
+                        <div id="subdirectories-{{ forloop.counter }}" class="subdirectory catalog-subdirectories-hidden">
+                            <ul>
+                                {% for subdirectory in catalog.subdirectories %}
+                                    <a href="/products/page-1/{{ catalog.name }}/{{ subdirectory }}">
+                                        <li>{{ subdirectory.render_name }}</li>
+                                    </a>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <section class="product-list">
+            {% for item in all_products %}
+                <a href="/product/{{item.ID}}" class="products-wrapper">
+                    <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{item.images | first}}">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">{{item.render_name}}</h3>
+                        <p class="product-price">{{item.price}}₽</p>
+                    </div>
+                    </div>
+                </a>
+            {% endfor %}
+            <div class="page-urls hidden">
+                <a href="" class="page-urls-arrow"><img src="/static/images/arrow-left.svg" alt=""></a>
+                {% for i in number_pages %}
+                    <a href="/products/page-{{i}}/{{catalog}}/{{subdirectory}}" class="page-urls-number" id="page-{{i}}">{{i}}</a>
+                {% endfor %}
+
+                <a class="page-urls-arrow"><img src="/static/images/arrow-right.svg" alt=""></a>
+            </div>
+        </section>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/products.js"></script>
+    <script>
+        let prev =  {{page_number}} - 1,
+        next =  {{page_number}} + 1;
+        document.querySelectorAll(".page-urls-arrow")[0].href = `/products/page-${prev}/{{catalog}}/{{subdirectory}}`
+        document.querySelectorAll(".page-urls-arrow")[1].href = `/products/page-${next}/{{catalog}}/{{subdirectory}}`
+
+        document.querySelector("#page-" + {{page_number}}).classList.add("active-page");
+
+        next_page = document.querySelector("#page-" + next);
+        if ({{page_number}} == 1)
+            document.querySelectorAll(".page-urls-arrow")[0].style.display = 'none';
+        if (next_page == null)
+            document.querySelectorAll(".page-urls-arrow")[1].style.display = 'none';
+    </script>
+{% endblock %}

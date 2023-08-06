@@ -1,0 +1,34 @@
+{% extends 'template.html' %}
+
+{% block title %}
+<title>Услуги</title>
+{% endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/styles/services.css">
+{% endblock %}
+
+{% block urls %}
+  <a href="/">Каталог</a>
+  <a href="/services" class="active">Услуги</a>
+  <a href="/company">О нас</a>
+  <a href="/contact">Контакты</a>
+{% endblock %}
+
+{% block content %}
+    <h1>Услуги</h1>
+    <div class="services">
+        <div class="services-list">
+          {% for service in service_list %}
+          <a href="{{service.name}}" class="service service-relative" color="black">
+            <img class="image" src="{{service.image}}">
+            <div class="service-details">
+              <h3>{{service.render_name}}</h3 color="black">
+              <p>{{service.mini_description}}</p>
+            </div>
+            <img src="/static/images/arrow-forward.svg" alt="" class="arrow">
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+{% endblock %}

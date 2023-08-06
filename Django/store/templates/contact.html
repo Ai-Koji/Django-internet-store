@@ -1,0 +1,71 @@
+{% extends 'template.html' %}
+
+{% block title %}
+<title>Контакты</title>
+{% endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/styles/contact.css">
+{% endblock %}
+
+{% block urls %}
+    <a href="/">Каталог</a>
+    <a href="/services">Услуги</a>
+    <a href="/company">О нас</a>
+    <a href="/contact" class="active">Контакты</a>
+{% endblock %}
+
+{% block content %}
+    <section class="blocks">
+        <div class="block-left">
+            <div class="center-block">
+                <h1>Contact Us</h1>
+                <p>
+                    Наш адрес: <br>
+                    152A Charlotte Street, <br>
+                    Peterborough ON <br>
+                    Телефон: 705-742-3221 
+                </p>
+                <div class="social-urls">
+                    <a href=""><img src="https://img.icons8.com/?size=512&id=32323&format=png"></a>
+                    <a href=""><img src="https://img.icons8.com/?size=512&id=32323&format=png"></a>
+                    <a href=""><img src="https://img.icons8.com/?size=512&id=32323&format=png"></a>
+                    <a href=""><img src="https://img.icons8.com/?size=512&id=32323&format=png"></a>
+                </div>
+            </div>
+        </div>
+        <div class="block-right">
+            <p>
+                Великое видение без великих людей не имеет значения. <br>
+                Давайте работать вместе.
+            </p>
+            <form id="form" action="/send_form/contact" method="post">
+                <div class="form">
+                    <label for="name">Имя</label><br>
+                    <input type="text" name="name"><br>
+                    
+                    <label for="Номер телефона">Номер телефона</label><br>
+                    <input type="text" name="phone"><br>
+                    
+                    <label for="E-mail">E-mail</label><br>
+                    <input type="email" name="email"><br>
+                    
+                    <label for="Message">Message</label><br>
+                    <textarea rows="4" cols="50" name="message"></textarea>
+                    
+                    <input class='' type="submit" id="submit-button" value="отправить"><br>
+                </div>
+                <div id="form-send-success">
+                    Thank you! Your message has been sent. 
+                </div>
+                <div id="form-send-error">
+                    Unable to send your message. Please fix errors then try again. 
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/contact.js"></script>
+{% endblock %}

@@ -1,0 +1,96 @@
+.services-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.services-header h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: 20px;
+    padding: 30px;
+    background-color: #e5e5e5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.service .image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 30px;
+    border-radius: 5px;
+}
+
+.service-details {
+    flex: 1;
+}
+
+.service h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.service p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.service h3, .service p {
+    color: black;
+    width: 85%;
+}
+
+.service h3:hover, .service p:hover {
+color: #478ac9;
+}
+
+.arrow {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 75px;
+}
+
+.service-relative {
+    position: relative;
+}
+
+
+@media (max-width: 900px) {
+.service {
+    display: block;
+    text-align: center;
+}
+.service h3 {
+    font-size: 60px;
+}
+
+.service .image {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 20px;
+    border-radius: 0;
+}
+
+.service-details {
+    text-align: center;
+}
+}

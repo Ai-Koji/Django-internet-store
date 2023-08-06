@@ -1,0 +1,115 @@
+{% extends 'template.html' %}
+
+{% block title %}
+<title>Каталог</title>
+{% endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/styles/main.css">
+{% endblock %}
+
+{% block urls %}
+        <a href="/" class="active">Каталог</a>
+        <a href="/services">Услуги</a>
+        <a href="/company">О нас</a>
+        <a href="/contact">Контакты</a>
+{% endblock %}
+
+{% block content %}
+        <section class="slider">
+            <div class="slides">
+                {% with slide_images|length as num_images %}
+                    {% for slide in all_slides %}
+                        <a href="{{slide.urlTo}}" class="slide">
+                            <img src="{{slide.image}}" alt="">
+                        </a>
+                    {% endfor %}
+                {% endwith %}
+            </div>
+            <div class="slide-buttons">
+                {% for i in num_images %}
+                    <button id="slide-button" onclick="slide({{i}})" class="active-button"><span class=""></span></button>
+                {% endfor %}
+            </div>
+            <button id="arrow-left" onclick="prevSlide()"><img src="/static/images/arrow-left.svg" alt=""></button>
+            <button id="arrow-right" onclick="nextSlide()"><img src="/static/images/arrow-right.svg" alt=""></button>
+        </section>
+        <h1 class="cards-header">Каталог</h1>
+        <section class="cards">
+            {% for catalog in catalog_list %}
+                <div class="card">
+                    <a href="/products/page-1/{{catalog.name}}"><img src="{{catalog.image}}" alt=""></a>
+                    <div class="card-info">
+                        <a href="/products/page-1/{{catalog.name}}"><h4>{{catalog.render_name}}</h4></a>
+                        <h5>
+                            {% for sub in catalog.subdirectories.all %}
+                                <a href="/products/page-1/{{catalog.name}}/{{sub.name}}">{{sub.render_name}}</a>
+                            {% endfor %}
+                        </h5>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+        <section class="benefit">
+            <div class="benefit-card">
+                <img src="/static/images/default.jpeg" alt="">
+                <h5>лучшая цена</h5>
+                <h6>от производителя</h6>
+            </div>
+            <div class="benefit-card">
+                <img src="/static/images/default.jpeg" alt="">
+                <h5>лучшая цена</h5>
+                <h6>от производителя</h6>
+            </div>
+            <div class="benefit-card">
+                <img src="/static/images/default.jpeg" alt="">
+                <h5>лучшая цена</h5>
+                <h6>от производителя</h6>
+            </div>
+            <div class="benefit-card">
+                <img src="/static/images/default.jpeg" alt="">
+                <h5>лучшая цена</h5>
+                <h6>от производителя</h6>
+            </div>
+            <div class="benefit-card">
+                <img src="/static/images/default.jpeg" alt="">
+                <h5>лучшая цена</h5>
+                <h6>от производителя</h6>
+            </div>
+        </section>
+        <section class="additional-Information">
+            <h1>Ветеринарное оборудование для современных клиник</h1>
+            <p>
+Компания ЗООМЕД поставляет, вводит в эксплуатацию и ремонтирует  медицинское оборудование для функциональной диагностики, хирургических операций и реанимации в ветеринарных клиниках.
+В продуктовом каталоге — медтехника и приборы ведущих производителей ветеринарного оборудования: Mindray, SIUI, EcoRay, 3DISC, HUGER, PZ Medical, SINOMDT, MNCHIP, ZOOMED и др.
+Для оснащения лабораторий, терапевтических кабинетов и операционных ЗООМЕД предлагает:
+            </p>
+<ul>
+    <li><a href="">электрокардиографы;</a></li>
+    <li><a href="">стационарная и переносная аппаратура для рентгенографии;</a></li>
+    <li><a href="">черно-белые и цветные ультразвуковые сканеры;</a></li>
+    <li><a href="">видеоэндоскопы, комплектующие и принадлежности для эндоскопии;</a></li>
+    <li><a href="">анализаторы для лаборатории;</a></li>
+    <li><a href="">мебель для операционной и диагностического отделения;</a></li>
+    <li><a href="">системы обогрева;</a></li>
+    <li><a href="">реанимационные мониторы и пульсоксиметры;</a></li>
+    <li><a href="">дозаторы и инфузионные насосы;</a></li>
+    <li><a href="">наркозно-дыхательные аппараты и принадлежности.</a></li>
+</ul>
+            <p>
+В нашем ассортименте есть оборудования для ветеринарии разных ценовых категорий: как недорогие портативные устройства для небольших ветеринарных кабинетов, так и стационарные мультикомплексные системы для многопрофильных ветеринарных клиник. специалистов нашей компании есть практический опыт комплектации и оснащения клиник с любым бюджетом.
+            </p>
+        </section>
+        <section class="additional-Information">
+            <h1>Где купить ветеринарное оборудование?</h1>
+            <p>
+Ознакомиться с ассортиментом ветеринарной техники и оборудования для вет кабинетов вы можете в наших шоу-румах в Москве и Санкт-Петербурге.
+Для оформления заказа онлайн оставьте заявку на покупку через формы на сайте или отправьте на e-mail zoomed@zoomed.ru.
+По телефонам 8-800-500-30-85, 8-495-739-41-51, 8-812-317-18-63 наши специалисты проконсультируют вас по вопросам выбора оборудования, расскажут вам о комплектации и технических характеристиках, подберут аналоги другого ценового уровня, составят подборку для комплексного оснащения в рамках вашего бюджета. 
+            </p>
+        </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/main.js"></script>
+{% endblock %}

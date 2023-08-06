@@ -1,0 +1,88 @@
+{% extends 'template.html' %}
+
+{% block title %}
+<title>{{product.name}}</title>
+{% endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/styles/product.css">
+{% endblock %}
+
+{% block urls %}
+  <a href="/">Каталог</a>
+  <a href="/services">Услуги</a>
+  <a href="/company">О нас</a>
+  <a href="/contact">Контакты</a>
+{% endblock %}
+
+{% block content %}
+<h1>{{product.name}}</h1>
+    <section class="main-block">
+        <div class="main-img-carousel">
+            {% for image in product.images %}<img src="{{image}}" id="main-img-slide" alt="">{% endfor %}
+            <button class="arrow-prev" onclick="mainSliderPrev()"><img src="/static/images/arrow-back.svg" alt=""></button>
+            <button class="arrow-next" onclick="mainSliderNext()"><img src="/static/images/arrow-forward.svg" alt=""></button>
+        </div>
+        <div class="price-and-form">
+            <h4>{{product.price}}</h4>
+            <button onclick="openOffer()"><b>ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ</b></button>
+        </div>
+    </section>
+    <hr>
+    <section class="info">
+        <div class="buttons">
+            <button id="button-1" class="active-button" onclick="changeInfo(1)">ОПИСАНИЕ</button>
+            <button id="button-2" onclick="changeInfo(2)">ХАРАКТЕРИСТИКИ</button>
+            <button id="button-3" onclick="changeInfo(3)">ИЗОБРАЖЕНИЯ</button>
+        </div>
+        <div class="info-content">
+            <div class="slide">
+                <p>{{product.about_product | safe }}</p>
+            </div><div class="slide">
+                <p>{{product.character | safe }}</p>
+            </div><div class="slide">
+                <div class="image-slides">
+                    <div class="img-slider">
+                        {% for image in product.additional_images %}
+                            <div class="img-slide">
+                                <img src="{{ image }}" alt="" id="additional-images-{{ forloop.counter }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="arrow-prev" onclick="bottomSliderPrev()"><img src="/static/images/arrow-back.svg" alt=""></button>
+                    <button class="arrow-next" onclick="bottomSliderNext()"><img src="/static/images/arrow-forward.svg" alt=""></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="Offer hidden">
+        <div id="Offer" >
+            <button class="close-button" onclick="closeOffer()"><span><img src="/static/images/close-black.svg" alt=""></span></button>
+            <h1>ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ</h1>
+            <form action="/send_form/offer" method="post" id="offer-form">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required="">
+
+                <label for="phone">Номер телефона</label>
+                <input type="text" id="phone" name="phone" required="">
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required="">
+
+                <label for="product">Название товара</label>
+                <input type="text" id="product" name="product" required="" value="{{product.name}}">
+
+                <input type="submit" value="отправить" id="submit-button">
+                
+                <div id="form-send-success" class="hidden"> Thank you! Your message has been sent. </div>
+                <div id="form-send-error" class="hidden"> Unable to send your message. Please fix errors then try again. </div>
+            </form>
+        </div>
+        <div class="black-film" onclick="closeOffer()">
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/product.js"></script>
+{% endblock %}

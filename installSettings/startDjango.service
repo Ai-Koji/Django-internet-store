@@ -1,0 +1,6 @@
+[Unit]
+Description=Start django server
+[Service]
+ExecStart=/etc/autostart.sh
+[Install]
+WantedBy=multi-user.target

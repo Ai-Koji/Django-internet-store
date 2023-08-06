@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title%}{% endblock %}
+    <link rel="stylesheet" href="/static/styles/main-styles.css">
+    {% block styles %}
+    {% endblock%}
+</head>
+<body>
+    <script src="/static/scripts/main-script.js"></script>
+    <header>
+        <div class="header-content">
+            <h2 class="urls">
+                <div class="pages">
+                    {% block urls %}
+                    {% endblock %}
+                    <button class="close-urls-button" onclick="openCloseCoverLinkedToPage()">
+                        <img src="/static/images/close.svg" alt="">
+                    </button>
+                </div>
+                <!-- mobile -->
+                <div class="open-urls-button">
+                    <button onclick="openCloseCoverLinkedToPage()">
+                        <img src="/static/images/menu.svg" alt="">
+                    </button>
+                </div>    
+                <div class="carpet-close" onclick="openCloseCoverLinkedToPage()"></div>
+                <div class="social">
+                    <a href=""><img src="https://img.icons8.com/?size=512&id=32323&format=png" alt="facebook"></a>
+                    <a href=""><img src="https://img.icons8.com/?size=512&id=32323&format=png" alt="twitter"></a>
+                    <a href=""><img src="https://img.icons8.com/?size=512&id=32323&format=png" alt="instagram"></a>
+                </div>
+            </h2>
+            <div class="logo">
+                <a href="/"><img src="http://127.0.0.1:8080/static/images/logo.jpg" alt="logo"></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="content">
+            {% block content %}
+            {% endblock %}
+        </section>
+    </main>
+
+    <footer>
+        <section class="blocks">
+            <div class="block">
+                <a href="/"><h1 class="first">Главная</h1></a>
+                <a href="/catalog"><h1>Каталог</h1></a>
+                <a href="/services"><h1>Услуги</h1></a>
+                <a href="/company"><h1>О нас</h1></a>
+            </div>
+            <div class="block">
+                <a href="/contact"><h1 class="first">Контакты</h1></a></div>
+            <div class="social-block block">
+                <a href=""><img src="https://img.icons8.com/?size=512&id=32323&format=png" alt="facebook"></a>
+                <a href=""><img src="https://img.icons8.com/?size=512&id=32323&format=png" alt="twitter"></a>
+                <a href=""><img src="https://img.icons8.com/?size=512&id=32323&format=png" alt="instagram"></a>
+            </div>
+        </section>
+        <h6>2023 © Дистрибьютор медицинского оборудования</h6>
+    </footer>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

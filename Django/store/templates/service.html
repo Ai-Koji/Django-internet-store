@@ -1,0 +1,98 @@
+{% extends 'template.html' %}
+
+{% block title %}
+<title>{{service.render_name}}</title>
+{% endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/styles/service.css">
+{% endblock %}
+
+{% block urls %}
+  <a href="/">Каталог</a>
+  <a href="/services">Услуги</a>
+  <a href="/company">О нас</a>
+  <a href="/contact">Контакты</a>
+{% endblock %}
+
+{% block content %}
+    <h1>{{service.render_name}}</h1>
+
+    <section class="application-block">
+        <p>Оформите заявку на сайте, мы свяжемся с вами в ближайшее время и ответим на все интересующие вопросы.</p>
+        <button href="#" class="application-button" onclick="openForm('service')">Оформить заявку</button>
+        <button href="#" class="question-button" onclick="openForm('question')">?</button>
+    </section>
+    <section class="service-content">
+        {{service.service_description | safe }}
+    </section>
+
+    <!-- form -->
+    <section class="service hidden">
+        <div id="form" >
+            <button class="close-button" onclick="closeForm('service')"><span><img src="/static/images/close-black.svg" alt=""></span></button>
+            <h1>Заказать услугу</h1>
+            <form id="form-teg" action="/send_form/service" method="post">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required="">
+
+                <label for="phone">Номер телефона</label>
+                <input type="text" id="phone" name="phone" required="">
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required="">
+
+                <label for="product">Название услуги</label>
+                <input type="text" id="product" name="service" required="" value="{{service.render_name}}">
+
+                <label for="product">Message</label>
+                <textarea rows="4" cols="50" id="message-e2a4" name="message" class="u-input u-input-rectangle" required=""></textarea>
+
+                <input type="submit" value="отправить" id="submit-button">
+                
+                <div id="form-send-success">
+                    Thank you! Your message has been sent. 
+                </div>
+                <div id="form-send-error">
+                    Unable to send your message. Please fix errors then try again. 
+                </div>
+            </form>
+        </div>
+        <div class="black-film" onclick="closeForm('service')">
+        </div>
+    </section>
+    <section class="question hidden">
+        <div id="form" >
+            <button class="close-button" onclick="closeForm('question')"><span><img src="/static/images/close-black.svg" alt=""></span></button>
+            <h1>Задать вопрос</h1>
+            <form id="form-teg" action="/send_form/question" method="post">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required="">
+
+                <label for="phone">Номер телефона</label>
+                <input type="text" id="phone" name="phone" required="">
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required="">
+
+                <label for="product">Message</label>
+                <textarea rows="4" cols="50" id="message-e2a4" name="message" class="u-input u-input-rectangle" required=""></textarea>
+
+                <input type="submit" value="отправить" id="submit-button">
+                
+                <div id="form-send-success">
+                    Thank you! Your message has been sent. 
+                </div>
+                <div id="form-send-error">
+                    Unable to send your message. Please fix errors then try again. 
+                </div>
+            </form>
+        </div>
+        <div class="black-film" onclick="closeForm('question')">
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/service.js"></script>
+{% endblock %}

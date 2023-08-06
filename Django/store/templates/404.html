@@ -1,0 +1,19 @@
+{% extends 'template.html' %}
+
+{% block title %}
+    <title>404</title>
+{% endblock%}
+
+{% block urls %}
+    <a href="/">Каталог</a>
+    <a href="/services">Услуги</a>
+    <a href="/company" class="active">О нас</a>
+    <a href="/contact">Контакты</a>
+{% endblock %}
+
+{% block content %}
+    <h1>404 - HTTP not found</h1>
+    <br>
+    <h4>Страница не найдена</h4>
+    <p>Вы заблудились или ошиблись адресом. Проверьте правильность адреса страницы, которую вы ищете.</p>
+{% endblock %}

@@ -1,0 +1,6 @@
+django
+secure-smtplib
+subprocess32
+python-telegram-bot
+django_ratelimit
+Pillow
