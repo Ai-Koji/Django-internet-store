@@ -23,12 +23,12 @@ pip install -r  installSettings/requirements.txt
 echo -e "move static for nginx \n"
 
 #Move startDjango.sh script
-sudo cp installSettings/startDjango.sh.sh /etc/
-sudo chmod 744 /etc/startDjango.sh.sh
+sudo cp installSettings/startDjango.sh /etc/
+sudo chmod 744 /etc/startDjango.sh
 
 #Move startMail.sh script
-sudo cp installSettings/startMail.sh /etc/
-sudo chmod 744 /etc/startMail.sh
+sudo cp installSettings/startMailScript.sh /etc/
+sudo chmod 744 /etc/startMailScript.sh
 
 #Move Django
 sudo cp -r Django /var/www/
