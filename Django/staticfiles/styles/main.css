@@ -1,3 +1,13 @@
+.about {
+    width: 70%;
+    font-size: 15pt;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+
+}
+
 /* slider */
 .slider {
     width: 80%;
@@ -75,7 +85,7 @@
 }
 
 /* cards */
-.cards-header {
+.cards-header h1 {
     margin-bottom: 100px;
 }
 
@@ -150,15 +160,22 @@
 }
 
 /* benefit */
-.benefit {
-    width: 100%;
+
+.benefit-header {
+    color: #484848;
+    font-size: 20pt;
     margin-top: 150px;
-    flex-wrap: wrap;
     text-align: center;
 }
 
+.benefit {
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+
 .benefit-card {
-    display: inline-block;
     width: 250px;
     margin: 2%;
     font-size: 30px;
@@ -179,7 +196,7 @@
 
 /* additional-Information */
 .additional-Information {
-    margin-top: 150px;
+    margin-top: 50px;
 }
 
 .additional-Information h1{
