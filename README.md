@@ -10,6 +10,7 @@
 - запустить скрипт установки(bash install.sh 2>errors.txt)
 - подключить letsencrypt(https://letsencrypt.org/)
 - перезапустить сервер(reboot)
+- изменить айпи в autostart.sh
 
 логи хранятся по пути /var/log/Django/
 статические файлы и django код находится по пути /var/www/Django 

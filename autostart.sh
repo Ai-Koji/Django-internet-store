@@ -3,4 +3,4 @@
 pathToDjango="/var/www/Django"
 
 cd $pathToDjango
-python3 start.py
+python3 manage.py runserver <ip>:8080
