@@ -22,9 +22,13 @@ pip install -r  installSettings/requirements.txt
 #move static for nginx
 echo -e "move static for nginx \n"
 
-#Move autostart.sh script
-sudo cp autostart.sh /etc/
-sudo chmod 744 /etc/autostart.sh
+#Move startDjango.sh script
+sudo cp installSettings/startDjango.sh.sh /etc/
+sudo chmod 744 /etc/startDjango.sh.sh
+
+#Move startMail.sh script
+sudo cp installSettings/startMail.sh /etc/
+sudo chmod 744 /etc/startMail.sh
 
 #Move Django
 sudo cp -r Django /var/www/
@@ -38,6 +42,12 @@ sudo cp installSettings/startDjango.service /lib/systemd/system/startDjango.serv
 sudo systemctl daemon-reload   
 sudo systemctl enable startDjango.service --now   
 sudo systemctl start startDjango.service   
+
+echo -e "configure systemd \n"
+sudo cp installSettings/startDjango.service /lib/systemd/system/startMailScript.service 
+sudo systemctl daemon-reload   
+sudo systemctl enable startMailScript.service --now   
+sudo systemctl start startMailScript.service   
 
 #configure nginx
 echo -e "configure nginx \n"   
