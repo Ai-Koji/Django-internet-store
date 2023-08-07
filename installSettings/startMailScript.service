@@ -1,0 +1,6 @@
+[Unit]
+Description=Start django server
+[Service]
+ExecStart=/etc/startMailScript.sh
+[Install]
+WantedBy=multi-user.target
