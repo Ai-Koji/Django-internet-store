@@ -7,6 +7,9 @@
 - настроить конфиг(config.py)
 - изменить айпи в startDjango.sh
 - изменить айпи и домен в nginx 
+- провести миграцию (python3 manage.py migrate)
+- создать суперпользователя (python3 manage.py createsuperuser)
+- создать новый secret_key ()
 - настроить worker_processes и worker_connections в nginx
 - запустить скрипт установки(bash install.sh 2>errors.txt)
 - подключить letsencrypt(https://letsencrypt.org/)
