@@ -10,21 +10,23 @@
     {% endblock%}
 </head>
 <body>
-    <script src="/static/scripts/main-script.js"></script>
+    <div id="loader"></div>
     <header>
         <section class="header-content">
-            <button class="urls-button" onclick="openUrls()"><img src="/static/images/menu.svg" alt=""></button>
-            <section class="urls hidding-animation">
+            <button class="open-urls-modile-button" style="display: none;" onclick="openUrls()"><img src="/static/images/menu.svg" alt=""></button>
+            <section class="header-urls"  style="transform: translateX(0%);">
                 <h2>
-                    {% block urls %}
-                    {% endblock %}
+                    <a href="/" {% if active_url == '/' %}class="active"{% endif %}>Каталог</a>
+                    <a href="/services" {% if active_url == '/services' %}class="active"{% endif %}>Услуги</a>
+                    <a href="/about" {% if active_url == '/about' %}class="active"{% endif %}>О нас</a>
+                    <a href="/contact" {% if active_url == '/contact' %}class="active"{% endif %}>Контакты</a>
                 </h2>
-                <button class="close-urls" onclick="closeUrls()"><img src="/static/images/close.svg" alt=""></button>
+                <button class="close-urls-modile-button" onclick="closeUrls()"><img src="/static/images/close.svg" alt=""></button>
             </section>
-            <section class="logo">
+            <section class="header-logo">
                 <a href="/"><img src="/static/images/logo.png" alt=""></a>
             </section>
-            <section class="contact">
+            <section class="header-social-block">
                 <a href=""><img src="/static/images/whatsapp.svg" alt=""></a>
                 <a href=""><img src="/static/images/vk.svg" alt=""></a>
                 <a href=""><img src="/static/images/instagram.svg" alt=""></a>
@@ -42,16 +44,16 @@
     </main>
 
     <footer>
-        <section class="blocks">
-            <div class="block">
-                <a href="/"><h1 class="first">Главная</h1></a>
+        <section class="footer-blocks">
+            <div class="footer-block">
+                <a href="/"><h1 style="margin-bottom:30px">Главная</h1></a>
                 <a href="/catalog"><h1>Каталог</h1></a>
                 <a href="/services"><h1>Услуги</h1></a>
                 <a href="/company"><h1>О нас</h1></a>
             </div>
-            <div class="block">
-                <a href="/contact"><h1 class="first">Контакты</h1></a></div>
-            <div class="social-block block">
+            <div class="footer-block">
+                <a href="/contact"><h1 style="margin-bottom:30px">Контакты</h1></a></div>
+            <div class="footer-social-block footer-block">
                 <a href=""><img src="/static/images/whatsapp.svg" alt=""></a>
                 <a href=""><img src="/static/images/vk.svg" alt=""></a>
                 <a href=""><img src="/static/images/instagram.svg" alt=""></a>
@@ -66,3 +68,4 @@
     {% endblock %}
 </body>
 </html>
+<script src="/static/scripts/main-script.js"></script>

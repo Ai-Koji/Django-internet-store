@@ -5,15 +5,15 @@ from images.models import *
 from django.views.decorators.csrf import csrf_exempt
 from math import ceil
 
-def page_company(request):
-    return render(request, "company.html")
+def page_about(request):
+    return render(request, "about.html", {"active_url": "/about"})
 
 def page_contacts(request):
-    return render(request, "contact.html")
+    return render(request, "contact.html", {"active_url": "/contact"})
 
 def page_services(request):
     all_services = [item.get_cells() for item in Service.objects.all()]
-    return render(request, "services.html", {"service_list": all_services})
+    return render(request, "services.html", {"service_list": all_services, "active_url": "/services"})
 
 def page_service(request, service_name):
     service = [item for item in Service.objects.all() if item.name == service_name][0].get_cells()
@@ -22,7 +22,7 @@ def page_service(request, service_name):
 def main_page(request):
     all_catalogs = [item.get_cells() for item in Catalog.objects.all()]
     all_slides = [item.get_cells() for item in Main_slider.objects.all()]
-    return render(request, "main.html", {"catalog_list": all_catalogs, "all_slides": all_slides})
+    return render(request, "main.html", {"catalog_list": all_catalogs, "all_slides": all_slides, "active_url": "/"})
 
 @csrf_exempt
 def page_products(request, catalog, page_number=1):
