@@ -10,7 +10,10 @@
     {% endblock%}
 </head>
 <body>
-    <div id="loader"></div>
+    <!-- loader -->
+    <div class="loader" id="loader"> 
+        <div class="loader-circle"></div>
+    </div>
     <header>
         <section class="header-content">
             <button class="open-urls-modile-button" style="display: none;" onclick="openUrls()"><img src="/static/images/menu.svg" alt=""></button>
@@ -69,3 +72,11 @@
 </body>
 </html>
 <script src="/static/scripts/main-script.js"></script>
+<script> // hide loader
+    window.addEventListener('load', function() {
+    document.getElementById('loader').style.opacity = 0;
+    setTimeout(function() {
+        document.getElementById('loader').style.display = 'none';
+    }, 500);
+});
+</script>
