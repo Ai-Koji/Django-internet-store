@@ -29,7 +29,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     IP,
-    DOMAIN
+    DOMAIN,
+    '127.0.0.1'
 ]
 
 
@@ -139,7 +140,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = '/var/www/staticfiles'
+STATIC_ROOT = '/var/www/static'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = os.path.join(BASE_DIR, 'media/')

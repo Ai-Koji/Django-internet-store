@@ -19,9 +19,6 @@ echo -e "install modules for python \n"
 pip install --upgrade pip
 pip install -r  installSettings/requirements.txt
 
-#move static for nginx
-echo -e "move static for nginx \n"
-
 #Move startDjango.sh script
 sudo cp installSettings/startDjango.sh /etc/
 sudo chmod 744 /etc/startDjango.sh
