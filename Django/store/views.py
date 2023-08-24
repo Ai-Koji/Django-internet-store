@@ -35,7 +35,6 @@ def page_products(request, catalog, page_number=1):
         raise Http404("Страница не найдена")
 
     products_query = Product.objects.filter(catalog__name=catalog)
-
     cost_min = ""
     cost_max = ""
     if request.method == "POST":
@@ -81,7 +80,8 @@ def page_products_subdirectories(request, catalog, subdirectory, page_number=1):
         catalog__name=catalog,
         subdirectories__name=subdirectory
     )
-
+    cost_min = ""
+    cost_max = ""
     if request.method == "POST":
         try:
             cost_min = int(request.POST.get("cost-min", 1))
