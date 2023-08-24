@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from math import ceil
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-limit = 1
+page_limit = 40
 
 def page_about(request):
     return render(request, "about.html", {"active_url": "/about"})
@@ -14,9 +14,23 @@ def page_about(request):
 def page_contacts(request):
     return render(request, "contact.html", {"active_url": "/contact"})
 
-def page_services(request):
-    all_services = [item.to_dict() for item in Service.objects.all()]
-    return render(request, "services.html", {"service_list": all_services, "active_url": "/services"})
+def page_services(request, page_number=1):
+
+    all_services = Service.objects.all()
+    paginator = Paginator(all_services, page_limit)
+
+    try:
+        all_services = paginator.page(page_number)
+    except (EmptyPage, PageNotAnInteger):
+        all_services = paginator.page(1)
+
+    all_services = [product.to_dict() for product in all_services]
+    return render(request, "services.html", {
+        "service_list": all_services, 
+        "active_url": "/services",
+        "number_pages": paginator.page_range,
+        "page_number": page_number,
+        })
 
 def page_service(request, service_name):
     service = [item for item in Service.objects.all() if item.name == service_name][0].to_dict()
@@ -49,7 +63,7 @@ def page_products(request, catalog, page_number=1):
         except:
             cost_max = ""
 
-    paginator = Paginator(products_query, limit)
+    paginator = Paginator(products_query, page_limit)
     
     try:
         all_products = paginator.page(page_number)
@@ -96,7 +110,7 @@ def page_products_subdirectories(request, catalog, subdirectory, page_number=1):
         except:
             cost_max = ""
 
-    paginator = Paginator(all_products, limit)
+    paginator = Paginator(all_products, page_limit)
 
     try:
         all_products = paginator.page(page_number)

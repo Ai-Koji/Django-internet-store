@@ -1,3 +1,7 @@
+.services {
+    margin-bottom: 100px;
+}
+
 .services-header {
     text-align: center;
     margin-bottom: 40px;
@@ -85,9 +89,48 @@
 .service-relative {
     position: relative;
 }
+.page-urls {
+    width: 50%;
+    color: black;
+    text-align: center;
+    position: absolute;
+    right:2%;
+    margin-top: 40px;
+}
+.page-urls a{
+    color: black;
+    width: 30px;
+    font-size: 25pt;
+    display: inline-block;
+}
+.page-urls a:hover{
+    color: #478ac9;
+    cursor: pointer;
+}
+.page-urls-arrow {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%;
+}
+.page-urls img {
+    width: 100%;
+    margin: 0 auto;
+}
+a.active-page {
+    color: #478ac9;
+}
 @media (max-width: 900px) {
-    .service {
+    .services-list {
         display: block;
+        text-align: center;
+    }
+
+    .service {
+        width: 35%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        display: inline-block;
         text-align: center;
    }
     .service h3 {
@@ -103,4 +146,17 @@
     .service-details {
         text-align: center;
    }
+   .arrow {
+    display: none;
+   }
+}
+
+@media (max-width: 600px){
+    
+    .service {
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        display: block;
+    }
 }

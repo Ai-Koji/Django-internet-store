@@ -14,7 +14,7 @@
         <div class="services-list">
           {% for service in service_list %}
             {% if service.available %}
-              <a href="{{service.name}}" class="service service-relative" color="black">
+              <a href="/service/{{service.name}}" class="service service-relative" color="black">
                 <img class="image" src="{{service.image}}">
                 <div class="service-details">
                   <h3>{{service.render_name}}</h3 color="black">
@@ -25,5 +25,30 @@
             {% endif %}
           {% endfor %}
         </div>
+        <div class="page-urls hidden">
+            <a href="" class="page-urls-arrow"><img src="/static/images/arrow-left.svg" alt=""></a>
+            {% for i in number_pages %}
+                <a href="/services/page-{{i}}/" class="page-urls-number" id="page-{{i}}">{{i}}</a>
+            {% endfor %}
+            <a class="page-urls-arrow"><img src="/static/images/arrow-right.svg" alt=""></a>
+        </div>
       </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/scripts/services.js"></script>
+    <script>
+        let prev =  {{page_number}} - 1,
+        next =  {{page_number}} + 1;
+        document.querySelectorAll(".page-urls-arrow")[0].href = `/services/page-${prev}/`
+        document.querySelectorAll(".page-urls-arrow")[1].href = `/services/page-${next}/`
+
+        document.querySelector("#page-" + {{page_number}}).classList.add("active-page");
+
+        next_page = document.querySelector("#page-" + next);
+        if ({{page_number}} == 1)
+            document.querySelectorAll(".page-urls-arrow")[0].style.display = 'none';
+        if (next_page == null)
+            document.querySelectorAll(".page-urls-arrow")[1].style.display = 'none';
+    </script>
 {% endblock %}

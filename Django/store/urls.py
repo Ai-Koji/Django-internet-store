@@ -8,6 +8,6 @@ urlpatterns = [
     path("product/<int:ID>", page_product, name="product"),
     path("about/", page_about, name="about"),
     path("contact/", page_contacts, name="contact"),
-    path("services/", page_services, name="services"),
-    path("services/<str:service_name>/", page_service, name="service"),
+    path("services/page-<int:page_number>/", page_services, name="services"),
+    path("service/<str:service_name>/", page_service, name="service"),
 ]
