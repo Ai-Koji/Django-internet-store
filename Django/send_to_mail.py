@@ -45,10 +45,10 @@ def send_info(header, text, encode='utf-8'):
 from form.models import *
 def get_info():
     global offer, Service_offer, contact, question
-    offer = [item for item in Offer.objects.all() if item.sended_to_mail == "False"] 
-    Service_offer = [item for item in ServiceOffer.objects.all() if item.sended_to_mail == "False"]
-    contact = [item for item in Contact.objects.all() if item.sended_to_mail == "False"]
-    question = [item for item in Question.objects.all() if item.sended_to_mail == "False"]
+    offer = [item for item in Offer.objects.all() if item.send_to_mail == True] 
+    Service_offer = [item for item in ServiceOffer.objects.all() if item.send_to_mail == False]
+    contact = [item for item in Contact.objects.all() if item.send_to_mail == False]
+    question = [item for item in Question.objects.all() if item.send_to_mail == False]
      
 
 def send_info_to_email():
@@ -113,7 +113,7 @@ def send_info_to_email():
 
             send_info(header, text)
 
-            element.sended_to_mail = True
+            element.send_to_mail = False
             element.save()
     smtp.quit()
     print('The next message is sent in 10 minutes')

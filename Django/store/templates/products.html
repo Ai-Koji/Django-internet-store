@@ -28,42 +28,48 @@
             </form>
             <div class="catalogs">
                 {% for catalog in catalogs_list %}
-                    <div class="catalog">
-                        <div class="catalog-catalog">
-                            <a href="/products/page-1/{{catalog.name}}/">
-                                <img src="{{catalog.image}}" alt="">
-                                <h4>{{ catalog.render_name }}</h4>
-                            </a>
-                            <button onclick="openCloseSubdirectories({{ forloop.counter }})">
-                                <img src="/static/images/arrow-down.svg" alt="" id="image-{{ forloop.counter }}">
-                            </button>
+                    {% if catalog.available %}
+                        <div class="catalog">
+                            <div class="catalog-catalog">
+                                <a href="/products/page-1/{{catalog.name}}/">
+                                    <img src="{{catalog.image}}" alt="">
+                                    <h4>{{ catalog.render_name }}</h4>
+                                </a>
+                                <button onclick="openCloseSubdirectories({{ forloop.counter }})">
+                                    <img src="/static/images/arrow-down.svg" alt="" id="image-{{ forloop.counter }}">
+                                </button>
+                            </div>
+                            <div id="subdirectories-{{ forloop.counter }}" class="subdirectory catalog-subdirectories-hidden">
+                                <ul>
+                                    {% for subdirectory in catalog.subdirectories %}
+                                        {% if subdirectory.available %}
+                                            <a href="/products/page-1/{{ catalog.name }}/{{ subdirectory }}">
+                                                <li>{{ subdirectory.render_name }}</li>
+                                            </a>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
-                        <div id="subdirectories-{{ forloop.counter }}" class="subdirectory catalog-subdirectories-hidden">
-                            <ul>
-                                {% for subdirectory in catalog.subdirectories %}
-                                    <a href="/products/page-1/{{ catalog.name }}/{{ subdirectory }}">
-                                        <li>{{ subdirectory.render_name }}</li>
-                                    </a>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </section>
         <section class="product-list">
-            {% for item in all_products %}
-                <a href="/product/{{item.ID}}" class="products-wrapper">
-                    <div class="product-card">
-                    <div class="product-image">
-                        <img src="{{item.images | first | join:""}}">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-title">{{item.render_name}}</h3>
-                        <p class="product-price">{{item.price_render}}</p>
-                    </div>
-                    </div>
-                </a>
+            {% for product in all_products %}
+                {% if product.available %}
+                    <a href="/product/{{item.ID}}" class="products-wrapper">
+                        <div class="product-card">
+                        <div class="product-image">
+                            <img src="{{item.images | first | join:""}}">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">{{product.render_name}}</h3>
+                            <p class="product-price">{{product.price_render}}</p>
+                        </div>
+                        </div>
+                    </a>
+                {% endif %}
             {% endfor %}
             <div class="page-urls hidden">
                 <a href="" class="page-urls-arrow"><img src="/static/images/arrow-left.svg" alt=""></a>

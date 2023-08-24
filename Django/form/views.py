@@ -15,7 +15,6 @@ def get_form(request, catalog):
                 email = request.POST["email"],
                 phone_number = request.POST["phone"],
                 product = request.POST["product"],
-                sended_to_mail = False,
                 time = timeNow[:timeNow.rfind(".")]
                 )
             item.save()
@@ -27,7 +26,6 @@ def get_form(request, catalog):
                 phone_number = request.POST["phone"],
                 service_name = request.POST["service"],
                 message = request.POST["message"],
-                sended_to_mail = False,
                 time = timeNow[:timeNow.rfind(".")]
                 )
             item.save()
@@ -38,7 +36,6 @@ def get_form(request, catalog):
                 email = request.POST["email"],
                 phone_number = request.POST["phone"],
                 message = request.POST["message"],
-                sended_to_mail = False,
                 time = timeNow[:timeNow.rfind(".")]
                 )
             item.save()
@@ -49,7 +46,6 @@ def get_form(request, catalog):
                 email = request.POST["email"],
                 phone_number = request.POST["phone"],
                 message = request.POST["message"],
-                sended_to_mail = False,
                 time = timeNow[:timeNow.rfind(".")]
                 )
             item.save()

@@ -13,9 +13,11 @@
         <section class="slider">
             <div class="slides">
                 {% for slide in all_slides %}
-                    <a href="{{ slide.urlTo }}" class="slide">
-                        <img src="{{ slide.image }}" alt="">
-                    </a>
+                    {% if slide.available %}
+                        <a href="{{ slide.urlTo }}" class="slide">
+                            <img src="{{ slide.image }}" alt="">
+                        </a>
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="slide-buttons">
@@ -29,17 +31,21 @@
         <h1 class="cards-header">Каталог</h1>
         <section class="cards">
             {% for catalog in catalog_list %}
-                <div class="card">
-                    <a href="/products/page-1/{{catalog.name}}"><img src="{{catalog.image}}" alt=""></a>
-                    <div class="card-info">
-                        <a href="/products/page-1/{{catalog.name}}"><h4>{{catalog.render_name}}</h4></a>
-                        <h5>
-                            {% for sub in catalog.subdirectories.all %}
-                                <a href="/products/page-1/{{catalog.name}}/{{sub.name}}">{{sub.render_name}}</a>
-                            {% endfor %}
-                        </h5>
+                {% if catalog.available %}
+                    <div class="card">
+                        <a href="/products/page-1/{{catalog.name}}"><img src="{{catalog.image}}" alt=""></a>
+                        <div class="card-info">
+                            <a href="/products/page-1/{{catalog.name}}"><h4>{{catalog.render_name}}</h4></a>
+                            <h5>
+                                {% for sub in catalog.subdirectories.all %}
+                                    {% if sub.available %}
+                                    <a href="/products/page-1/{{catalog.name}}/{{sub.name}}">{{sub.render_name}}</a>
+                                    {% endif %}
+                                {% endfor %}
+                            </h5>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         </section>
         <h4 class="benefit-header">Почему мы:</h4>

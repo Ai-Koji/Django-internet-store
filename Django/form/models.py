@@ -1,11 +1,11 @@
 from django.db import models
 
 class BaseRequest(models.Model):
+    send_to_mail = models.BooleanField(default=True)
     username = models.CharField(max_length=30)
     email = models.EmailField(max_length=100)
     phone_number = models.CharField(max_length=30)
     message = models.TextField()
-    sended_to_mail = models.CharField(max_length=40)
     time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
