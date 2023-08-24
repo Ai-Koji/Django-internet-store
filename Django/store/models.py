@@ -3,6 +3,7 @@ from images.models import Image
 import os
 
 class Main_slider(models.Model):
+    available = models.BooleanField(default=True)
     image = models.ImageField(upload_to="images/")
     urlTo = models.CharField(max_length=60, blank=True)
     def __str__(self):
@@ -26,6 +27,7 @@ class BaseModel(models.Model):
         return self.render_name
 
 class Subdirectory(models.Model):
+    available = models.BooleanField(default=True)
     name = models.CharField(max_length=30)
     render_name = models.CharField(max_length=30)
     def __str__(self):
