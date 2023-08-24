@@ -6,6 +6,7 @@ class BaseModel(models.Model):
     name = models.CharField(max_length=30)
     render_name = models.CharField(max_length=30)
     image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    available = models.BooleanField(default=True)
     
     class Meta:
         abstract = True
@@ -32,11 +33,13 @@ class Product(models.Model):
     render_name = models.CharField(max_length=30)
     catalog = models.ForeignKey(Catalog, on_delete=models.CASCADE)
     subdirectories = models.ManyToManyField(Subdirectory, blank=True) 
-    price = models.CharField(max_length=30) # number
+    price = models.IntegerField() # number
+    price_render = models.CharField(max_length=30) 
     about_product = models.TextField(blank=True) # html content
     character = models.TextField(blank=True) # html content
     images = models.ManyToManyField(Image, related_name='main_slider+', blank=True) # first image - main image
     additional_images = models.ManyToManyField(Image, related_name='last_slider+', blank=True) # image list
+    available = models.BooleanField(default=True)
     def get_cells(self): # getting cells for page rendering
         return {"name": self.render_name, 
                 "catalog": self.catalog,
@@ -45,7 +48,8 @@ class Product(models.Model):
                 "about_product": self.about_product,
                 "character": self.character,
                 "images": [ image.image.url for image in list(self.images.all())],
-                "additional_images": [ image.image.url for image in list(self.additional_images.all())]
+                "additional_images": [ image.image.url for image in list(self.additional_images.all())],
+                "price_render":  self.price_render
                 }
     def __str__(self):
         return self.render_name
