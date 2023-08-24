@@ -56,6 +56,8 @@ def page_products(request, catalog, page_number=1):
     except (EmptyPage, PageNotAnInteger):
         all_products = paginator.page(1)
     
+    all_products = [product.to_dict() for product in all_products]
+    
     catalogs_list = [item.to_dict() for item in Catalog.objects.all()]
     return render(request, "products.html", {
         "catalogs_list": catalogs_list,
@@ -95,12 +97,18 @@ def page_products_subdirectories(request, catalog, subdirectory, page_number=1):
             cost_max = ""
 
     paginator = Paginator(all_products, limit)
-    page_obj = paginator.get_page(page_number)
 
+    try:
+        all_products = paginator.page(page_number)
+    except (EmptyPage, PageNotAnInteger):
+        all_products = paginator.page(1)
+
+    all_products = [product.to_dict() for product in all_products]
+    
     catalogs_list = [item.to_dict() for item in Catalog.objects.all()]
     return render(request, "products.html", {
         "catalogs_list": catalogs_list,
-        "all_products": page_obj,
+        "all_products": all_products,
         "title": subdirectory,
         "catalog": catalog,
         "subdirectory": subdirectory,

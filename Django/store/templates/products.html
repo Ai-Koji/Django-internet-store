@@ -58,10 +58,10 @@
         <section class="product-list">
             {% for product in all_products %}
                 {% if product.available %}
-                    <a href="/product/{{item.ID}}" class="products-wrapper">
+                    <a href="/product/{{product.id}}" class="products-wrapper">
                         <div class="product-card">
                         <div class="product-image">
-                            <img src="{{item.images | first | join:""}}">
+                            <img src="{{product.images | first | join:""}}">
                         </div>
                         <div class="product-details">
                             <h3 class="product-title">{{product.render_name}}</h3>

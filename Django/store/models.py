@@ -64,7 +64,8 @@ class Product(models.Model):
                 "images": [ "/media/images/" + os.path.basename(str(image.image.url)) for image in list(self.images.all())],
                 "additional_images": [ "/media/images/" + os.path.basename(str(image.image.url)) for image in list(self.additional_images.all())],
                 "price_render":  self.price_render,
-                "available": self.available
+                "available": self.available,
+                "id": self.id
                 }
     def __str__(self):
         return self.render_name
