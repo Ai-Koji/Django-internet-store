@@ -31,7 +31,7 @@
                     <div class="catalog">
                         <div class="catalog-catalog">
                             <a href="/products/page-1/{{catalog.name}}/">
-                                <img src="https://vetline.kz/media/images/857498.png" alt="">
+                                <img src="{{catalog.image}}" alt="">
                                 <h4>{{ catalog.render_name }}</h4>
                             </a>
                             <button onclick="openCloseSubdirectories({{ forloop.counter }})">
