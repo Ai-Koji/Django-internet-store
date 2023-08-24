@@ -263,6 +263,9 @@ footer a {
 }
 
 @media (max-width:800px) {
+    .open-urls-modile-button {
+        width: 9vw;
+    }
     .footer-blocks {
         display: block;
     }
@@ -282,9 +285,21 @@ footer a {
 }
 
 @media (max-width:750px) {
-    
+    .open-urls-modile-button {
+        width: 12vw;
+    }
     .social a {
         width: 25%;
+    }
+}
+@media (max-width:600px) {
+    .open-urls-modile-button {
+        width: 13vw;
+    }
+}
+@media (max-width:500px) {
+    .open-urls-modile-button {
+        width: 15vw;
     }
 }
 
