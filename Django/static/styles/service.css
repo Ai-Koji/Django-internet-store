@@ -1,4 +1,3 @@
-
 .application-block {
     background-color: #F2F2F2;
     font-size: 25px;
@@ -7,7 +6,6 @@
     margin: 0 auto;
     padding: 1%;
 }
-
 .service-content {
     width: 90%;
     margin: 0 auto;
@@ -15,7 +13,6 @@
     padding: 1%;
     font-size: 25px;
 }
-
 .application-block button{
     background-color:#478ac9;
     display:inline-block;
@@ -31,15 +28,13 @@
     margin-left: 20px;
     margin-right: 20px;
 }
-
 .application-block button:hover {
-background-color:#3377b6;
+    background-color:#3377b6;
 }
 .application-block button:active {
-position:relative;
-top:1px;
+    position:relative;
+    top:1px;
 }
-
 /* form */
 #form-send-success {
     width: 70%;
@@ -51,7 +46,6 @@ top:1px;
     margin-top: 20px;
     display: none;
 }
-
 #form-send-error {
     width: 70%;
     padding: 20px;
@@ -62,7 +56,6 @@ top:1px;
     margin-top: 20px;
     display: none;
 }
-
 #form {
     position: fixed;
     top: 5%;
@@ -76,12 +69,10 @@ top:1px;
     z-index:2;
     transition: all .5s ease-in-out;
 }
-
 #form h1{
     font-size: 150%;
     width: 90%;
 }
-
 .black-film {
     position: fixed;
     width: 100vw;
@@ -91,8 +82,7 @@ top:1px;
     background-color: rgba(0, 0, 0, 0.85);
     z-index:1;
 }
-
-.close-button  {
+.close-button {
     background: none;
     border: none;
     position: absolute;
@@ -100,17 +90,14 @@ top:1px;
     right: 1%;
     cursor: pointer;
 }
-
 #form form label {
     width: 100%;
     display: block;
     margin-top: 5%;
 }
-
 #form form {
     padding: 5%;
 }
-
 textarea {
     width: 93%;
     padding: 15px;
@@ -123,13 +110,10 @@ textarea {
     border-radius: 5px;
     box-shadow: -50px 0px 0px rgba(66,66,66,.0);
     text-shadow: -50px 0px 0px rgba(66,66,66,.100);
-
 }
-
 textarea:focus {
     outline:none;
 }
-
 input {
     width: 93%;
     padding: 15px;
@@ -146,14 +130,12 @@ input {
 input:focus {
     outline:none;
 }
-
 textarea {
     width: 93%;
     height: 100px;
     font-size: 17px;
     padding: 15px;
 }
-
 input[type="submit"] {
     background-color: #333;
     color: #FFFFFF;
@@ -162,14 +144,11 @@ input[type="submit"] {
     margin-top: 30px;
     cursor: pointer;
 }
-
-
 @media (max-height:1100px) {
     #form {
         height: 90%;
-    }
+   }
 }
-
 input[type="submit"].submit-disabled {
     cursor:auto;
     background-color: #FFFFFF;

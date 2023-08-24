@@ -1,28 +1,23 @@
 body {
     overflow-x: hidden;
 }
-
 .content {
     padding-top: 0;
 }
-
 .content h1 {
     margin-bottom: 3%;
     padding-left: 0;
 }
-
 .main-block {
     width: 100%;
     padding-left: 2%;
     display: flex;
     margin-bottom: 50px;
 }
-
 .main-block img {
     width: 100%;
     margin: 0 auto;
 }
-
 .main-img-carousel {
     width: 600px;
     margin-right: 2%;
@@ -30,12 +25,9 @@ body {
     overflow: hidden;
     white-space: nowrap;
 }
-
 .main-img-carousel img {
     display: inline-block;
 }
-
-
 .price-and-form {
     width: auto;
     display: flex;
@@ -43,61 +35,56 @@ body {
     justify-content: flex-end;
     padding-bottom: 2%;
 }
-
 .price-and-form button {
-	background-color:#478ac9;
-	display:inline-block;
+    background-color:#478ac9;
+    display:inline-block;
     height: 75px;
     width: 340px;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:20px;
-	font-weight:bold;
-	padding:20px;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:20px;
+    font-weight:bold;
+    padding:20px;
     margin-top: 30px;
     margin-left: 0;
-	text-decoration:none;
+    text-decoration:none;
     border: none;
     transition: all 0.5s;
 }
 .price-and-form button:hover {
-	background-color:#3377b6;
+    background-color:#3377b6;
 }
 .price-and-form button:active {
-	position:relative;
-	top:1px;
+    position:relative;
+    top:1px;
 }
-
 .buttons {
     width: 100%;
     display: flex;
     justify-content: center;
 }
-
 .main-block button{
-        background-color:#478ac9;
-        display:inline-block;
-        cursor:pointer;
-        color:#ffffff;
-        font-size:20px;
-        font-weight:bold;
-        padding:20px;
-        margin-top: 30px;
-        text-decoration:none;
-        border: none;
-        transition: all 0.5s;
-        margin-left: 20px;
-        margin-right: 20px;
+    background-color:#478ac9;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:20px;
+    font-weight:bold;
+    padding:20px;
+    margin-top: 30px;
+    text-decoration:none;
+    border: none;
+    transition: all 0.5s;
+    margin-left: 20px;
+    margin-right: 20px;
 }
-
 .main-block button:hover {
-	background-color:#3377b6;
+    background-color:#3377b6;
 }
 .main-block button:active {
-	position:relative;
-	top:1px;
+    position:relative;
+    top:1px;
 }
-
 .buttons button{
     background-color:#478ac9;
     display:inline-block;
@@ -113,15 +100,13 @@ body {
     margin-left: 20px;
     margin-right: 20px;
 }
-
 .buttons button:hover {
-background-color:#3377b6;
+    background-color:#3377b6;
 }
 .buttons button:active {
-position:relative;
-top:1px;
+    position:relative;
+    top:1px;
 }
-
 .buttons .active-button {
     background-color: white;
     border: 2px solid black;
@@ -129,13 +114,12 @@ top:1px;
     cursor:auto;
 }
 .buttons .active-button:hover {
-	background-color: white;
+    background-color: white;
 }
 .buttons .active-button:active {
-	position:relative;
-	top:auto;
+    position:relative;
+    top:auto;
 }
-
 /* info carousel */
 .info-content {
     width: 90%;
@@ -150,11 +134,9 @@ top:1px;
     margin-bottom: 100px;
     border: 1px solid black;
 }
-
 .image-slides {
     position: relative;
 }
-
 .img-slider {
     width: 90%;
     position: relative;
@@ -162,7 +144,6 @@ top:1px;
     white-space: nowrap;
     margin: 0 auto;
 }
-
 .img-slide {
     width: 100%;
     display: inline-block;
@@ -170,24 +151,19 @@ top:1px;
     transition: transform 1s ease-in-out;
     position: relative;
 }
-
 .img-slide img {
     width: 80%;
     margin: 0 auto;
 }
-
 .img-slides button {
     position: absolute;
 }
-
 .arrow-prev {
     left: 1%;
 }
-
 .arrow-next {
     right: 1%;
 }
-
 .slide button{
     position: absolute;
     transform: translateY(-50%);
@@ -195,16 +171,12 @@ top:1px;
     background: none;
     border: 2px solid black;
     cursor: pointer;
-
 }
-
 .slide button:active{
     position: absolute;
     transform: translateY(-50%);
     top: 50%;
 }
-
-
 .slide {
     display: inline-block;
     width: 99.9%;
@@ -217,9 +189,7 @@ top:1px;
     transition: transform .5s ease-in-out;
     position: relative;
 }
-
 /* form */
-
 #Offer {
     position: fixed;
     top: 5%;
@@ -233,12 +203,10 @@ top:1px;
     z-index:2;
     transition: all .5s ease-in-out;
 }
-
 #Offer h1{
     font-size: 150%;
     width: 90%;
 }
-
 .black-film {
     position: fixed;
     width: 100vw;
@@ -248,8 +216,7 @@ top:1px;
     background-color: rgba(0, 0, 0, 0.85);
     z-index:1;
 }
-
-.close-button  {
+.close-button {
     background: none;
     border: none;
     position: absolute;
@@ -257,17 +224,14 @@ top:1px;
     right: 1%;
     cursor: pointer;
 }
-
 #Offer form label {
     width: 100%;
     display: block;
     margin-top: 5%;
 }
-
 #Offer form {
     padding: 5%;
 }
-
 input {
     width: 93%;
     padding: 15px;
@@ -284,14 +248,12 @@ input {
 input:focus {
     outline:none;
 }
-
 textarea {
     width: 93%;
     height: 100px;
     font-size: 17px;
     padding: 15px;
 }
-
 input[type="submit"] {
     background-color: #333;
     color: #FFFFFF;
@@ -300,28 +262,23 @@ input[type="submit"] {
     margin-top: 30px;
     cursor: pointer;
 }
-
-
 @media (max-height:1100px) {
     #Offer {
         height: 90%;
-
-    }
+   }
 }
-
 @media (max-width: 1000px) {
     .main-block {
         display: block;
-    }
+   }
     .main-img-carousel {
         width: 95%;
         margin-right: 2%;
-    }
+   }
     .price-and-form button {
         width: 600px;
-    }
+   }
 }
-
 /* form */
 #form-send-success {
     width: 70%;
@@ -333,7 +290,6 @@ input[type="submit"] {
     margin-top: 20px;
     display: none;
 }
-
 #form-send-error {
     width: 70%;
     padding: 20px;
@@ -344,15 +300,12 @@ input[type="submit"] {
     margin-top: 20px;
     display: none;
 }
-
 p {
     width: 90%;
     margin: 0 auto;
     word-wrap: break-word;
-    overflow-wrap: break-word   
+    overflow-wrap: break-word 
 }
-
-
 .main-img-carousel button {
     position: absolute;
     background: none;
@@ -363,13 +316,11 @@ p {
     top: 50%;
     transform: translateY(-50%);
 }
-
 .main-img-carousel button:active {
     position: absolute;
     top: 48%;
     transform: translateY(-50%);
 }
-
 #main-img-slide {
     transition: transform 1s ease-in-out;
 }
