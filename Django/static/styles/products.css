@@ -171,28 +171,23 @@
     margin-top: 15px;
     transition: color 0.5s;
 }
-@media (max-width: 1000px) {
-    .panel {
-        display: none;
-   }
-    .product-list {
-        margin: 0 auto;
-   }
-}
 .page-urls {
-    width: 300px;
+    width: 50%;
     color: black;
     text-align: center;
     position: absolute;
     right:2%;
+    margin-top: 40px;
 }
 .page-urls a{
     color: black;
-    width: 50px;
+    width: 30px;
+    font-size: 25pt;
     display: inline-block;
 }
 .page-urls a:hover{
     color: #478ac9;
+    cursor: pointer;
 }
 .page-urls-arrow {
     display: table-cell;
@@ -203,6 +198,22 @@
 .page-urls img {
     width: 100%;
     margin: 0 auto;
+}
+@media (max-width: 1000px) {
+    .panel {
+        display: none;
+   }
+    .product-list {
+        margin: 0 auto;
+   }
+   .page-urls {
+        left: 0;
+        right:0;
+        width: 100%;
+   }
+   .page-urls a{
+        width: 50px;
+   }
 }
 a.active-page {
     color: #478ac9;
