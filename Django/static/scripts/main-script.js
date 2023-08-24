@@ -42,11 +42,3 @@ function openForm(formName){
 function closeForm(formName){
     document.querySelector(`.${formName}`).classList.add("hidden");
 }
-
-// hide loader
-window.addEventListener('load', function() {
-    document.getElementById('loader').style.opacity = 0;
-    setTimeout(function() {
-        document.getElementById('loader').style.display = 'none';
-    }, 500);
-});
