@@ -92,6 +92,16 @@ header a {
     display: inline-block;
 }
 
+.header-social-block-phone {
+    width: 100%;
+}
+
+.header-social-block-phone a {
+    display: block;
+    width:auto;
+    margin: 0 auto;
+}
+
 .header-social-block img {
     width: 100%;
 }
