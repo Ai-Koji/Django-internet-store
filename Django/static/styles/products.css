@@ -75,12 +75,10 @@
 .catalog-catalog {
     width: 100%;
     display: flex;
-    justify-content: space-between;
 }
 
 .catalog a {
     display: flex;
-    justify-content: space-between;
     color: #478ac9;
 }
 
@@ -97,11 +95,12 @@
 }
 
 .catalog a img {
-    width: 30%;
+    width: 15%;
+    margin: 2%;
 }
 
 .catalog button {
-    width: 25%;
+    width: 10%;
     background-color: #E9E9ED;
     border: none;
     cursor: pointer;
@@ -117,6 +116,7 @@
 
 .subdirectory {
     border-top: 1px solid black;
+    transition: all 2s;
 }
 
 .catalog-subdirectories-hidden {

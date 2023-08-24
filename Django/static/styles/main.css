@@ -114,7 +114,7 @@
 }
 
 .card a:hover {
-    transform: scale(1.1);
+    transform: translateX(10px);
 }
 
 .card a img{
@@ -133,13 +133,17 @@
 .card-info h4{
     margin: 1px;
     font-size: 20pt;
-    margin-bottom: 10px;
 }
-
 
 .card-info h5{
     font-size: 11pt;
     margin: 1px;
+}
+
+.card-info h5 a {
+    padding: 2%;
+    padding-bottom: 5px;
+    margin: 0;
 }
 
 .card-info a {
