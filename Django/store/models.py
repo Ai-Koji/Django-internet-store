@@ -47,8 +47,8 @@ class Product(models.Model):
                 "price": self.price,
                 "about_product": self.about_product,
                 "character": self.character,
-                "images": [ image.image.url for image in list(self.images.all())],
-                "additional_images": [ image.image.url for image in list(self.additional_images.all())],
+                "images": [ "/media/images/" + os.path.basename(str(image.image.url)) for image in list(self.images.all())],
+                "additional_images": [ "/media/images/" + os.path.basename(str(image.image.url)) for image in list(self.additional_images.all())],
                 "price_render":  self.price_render
                 }
     def __str__(self):

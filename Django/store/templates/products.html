@@ -56,7 +56,7 @@
                 <a href="/product/{{item.ID}}" class="products-wrapper">
                     <div class="product-card">
                     <div class="product-image">
-                        <img src="{{item.images | first}}">
+                        <img src="{{item.images | first | join:""}}">
                     </div>
                     <div class="product-details">
                         <h3 class="product-title">{{item.render_name}}</h3>
