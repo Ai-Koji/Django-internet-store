@@ -39,7 +39,7 @@
                                     <img src="/static/images/arrow-down.svg" alt="" id="image-{{ forloop.counter }}">
                                 </button>
                             </div>
-                            <div id="subdirectories-{{ forloop.counter }}" class="subdirectory catalog-subdirectories-hidden">
+                            <div id="subdirectories-{{ forloop.counter }}" class="subdirectory" style="max-height: 0;">
                                 <ul>
                                     {% for subdirectory in catalog.subdirectories %}
                                         {% if subdirectory.available %}

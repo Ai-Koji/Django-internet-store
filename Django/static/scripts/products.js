@@ -5,39 +5,39 @@ let active = null;
 function openCloseSubdirectories(ID) {
     try {
         if (active != ID )
-        closeSubdirectories(active)        
+            closeSubdirectories(active);        
     } catch (error) {
         //
     }
 
     if (ID == active){
-        closeSubdirectories(ID)
+        closeSubdirectories(ID);
     }
     else
-        openSubdirectories(ID)
+        openSubdirectories(ID);
 }
  
 function closeSubdirectories(ID) {
-    active = null
+    active = null;
 
-    block = document.querySelector(`#subdirectories-${ID}`)
-    block.classList.add('catalog-subdirectories-hidden')
-    image = document.querySelector(`#image-${ID}`)
-    image.src = '/static/images/arrow-down.svg'
+    block = document.querySelector(`#subdirectories-${ID}`);
+    block.style = "max-height: 0";
+    image = document.querySelector(`#image-${ID}`);
+    image.src = '/static/images/arrow-down.svg';
 }
 
 function openSubdirectories(ID) {
-    active = ID
+    active = ID;
 
-    block = document.querySelector(`#subdirectories-${ID}`)
-    block.classList.remove('catalog-subdirectories-hidden')
-    image = document.querySelector(`#image-${ID}`)
-    image.src = '/static/images/arrow-up.svg'
+    block = document.querySelector(`#subdirectories-${ID}`);
+    block.style = "max-height: 200px";
+    image = document.querySelector(`#image-${ID}`);
+    image.src = '/static/images/arrow-up.svg';
 }
 
 
 
-products = document.querySelectorAll(".page-urls-number").length
+products = document.querySelectorAll(".page-urls-number").length;
 if (products > 1) {
-    document.querySelector('.page-urls').classList.remove('hidden')
+    document.querySelector('.page-urls').classList.remove('hidden');
 }

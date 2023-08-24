@@ -48,6 +48,19 @@
     border-radius: 0px;
     box-shadow: -50px 0px 30px rgba(66,66,66,.0);
     text-shadow: 0px 0px 5px rgba(66,66,66,.0);
+    transition: all 0.5s;
+}
+.options input[type="submit"]:hover {
+
+    background-color:#478ac9;
+    color: black;
+    border-style: solid;
+    border-radius: 0px;
+    box-shadow: -50px 0px 30px rgba(66,66,66,.0);
+    text-shadow: 0px 0px 5px rgba(66,66,66,.0);
+}
+ul {
+    padding-left: 10%;
 }
 .cost-input {
     display: flex;
@@ -74,7 +87,7 @@
 }
 .catalog a h4 {
     width: 65%;
-    font-size: 20pt;
+    font-size: 25pt;
     margin: 0;
     padding-top: 4%;
     padding-left: 2%;
@@ -98,10 +111,9 @@
 }
 .subdirectory {
     border-top: 1px solid black;
-    transition: all 2s;
-}
-.catalog-subdirectories-hidden {
-    display: none;
+    overflow: hidden;
+    transition: all 1s;
+    max-height: 0;
 }
 .product-list {
     width: 75%;
