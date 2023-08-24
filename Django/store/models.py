@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 from images.models import Image
 import os
 
@@ -48,7 +49,7 @@ class Product(models.Model):
     render_name = models.CharField(max_length=30)
     catalog = models.ForeignKey(Catalog, on_delete=models.CASCADE)
     subdirectories = models.ManyToManyField(Subdirectory, blank=True) 
-    price = models.IntegerField(blank=True) # number
+    price = models.IntegerField(blank=True, validators=[MinValueValidator(0)]) # number
     price_render = models.CharField(max_length=30) 
     about_product = models.TextField(blank=True) # html content
     character = models.TextField(blank=True) # html content
