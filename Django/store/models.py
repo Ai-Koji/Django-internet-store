@@ -8,11 +8,11 @@ class Main_slider(models.Model):
     urlTo = models.CharField(max_length=60, blank=True)
     def __str__(self):
         return os.path.basename(self.image.name)
-    def get_cells(self): # getting cells for page rendering
+    def to_dict(self): # getting cells for page rendering
         return {"name": self.name,
-            "image": "/media/images/" + os.path.basename(str(self.image)),
-            "urlTo": self.urlTo
-            }
+                "image": "/media/images/" + os.path.basename(str(self.image)),
+                "urlTo": self.urlTo
+                }
             
 class BaseModel(models.Model):
     available = models.BooleanField(default=True)
@@ -35,11 +35,12 @@ class Subdirectory(models.Model):
     
 class Catalog(BaseModel):
     subdirectories = models.ManyToManyField(Subdirectory, blank=True)  
-    def get_cells(self): # getting cells for page rendering
+    def to_dict(self): # getting cells for page rendering
         return {"name": self.name, 
                 "render_name": self.render_name,
                 "image":"/media/images/" + os.path.basename(str(self.image)),
                 "subdirectories": self.subdirectories.all(),
+                "available": self.available
                 }
 
 class Product(models.Model):
@@ -47,13 +48,13 @@ class Product(models.Model):
     render_name = models.CharField(max_length=30)
     catalog = models.ForeignKey(Catalog, on_delete=models.CASCADE)
     subdirectories = models.ManyToManyField(Subdirectory, blank=True) 
-    price = models.IntegerField() # number
+    price = models.IntegerField(blank=True) # number
     price_render = models.CharField(max_length=30) 
     about_product = models.TextField(blank=True) # html content
     character = models.TextField(blank=True) # html content
     images = models.ManyToManyField(Image, related_name='main_slider+', blank=True) # first image - main image
     additional_images = models.ManyToManyField(Image, related_name='last_slider+', blank=True) # image list
-    def get_cells(self): # getting cells for page rendering
+    def to_dict(self): # getting cells for page rendering
         return {"name": self.render_name, 
                 "catalog": self.catalog,
                 "subdirectories": [ sub.name for sub in list(self.subdirectories.all())],
@@ -71,7 +72,7 @@ class Product(models.Model):
 class Service(BaseModel):
     service_description = models.TextField(blank=True) # html content
     mini_description = models.TextField(blank=True) # text
-    def get_cells(self): # getting cells for page rendering
+    def to_dict(self): # getting cells for page rendering
         return {"name": self.name, 
                 "image": self.image.image.url,
                 "render_name": self.render_name,
