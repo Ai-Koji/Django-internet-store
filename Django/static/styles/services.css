@@ -18,13 +18,14 @@
 
 .service {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     width: 90%;
     margin: 20px;
     padding: 30px;
     background-color: #e5e5e5;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    transition: all;
 }
 
 .service .image {
@@ -33,6 +34,7 @@
     object-fit: cover;
     margin-right: 30px;
     border-radius: 5px;
+    transition: all 0.5s;
 }
 
 .service-details {
@@ -44,12 +46,14 @@
     font-weight: bold;
     margin: 0;
     margin-bottom: 10px;
+    transition: color 0.5s;
 }
 
 .service p {
     font-size: 18px;
     line-height: 1.5;
     margin: 0;
+    transition: color 0.5s;
 }
 
 .service h3, .service p {
@@ -57,16 +61,42 @@
     width: 85%;
 }
 
-.service h3:hover, .service p:hover {
-color: #478ac9;
-}
-
 .arrow {
     position: absolute;
     top: 20px;
     right: 20px;
     width: 75px;
+    transition: all;
 }
+
+.service:hover .arrow{
+    animation: arrowAnimation 1s ease infinite;
+}
+
+.service:hover p{
+    color: #478ac9;
+}
+
+.service:hover h3 {
+    color: #478ac9;
+}
+
+.service:hover .image {
+    transform: scale(1.1);
+}
+
+@keyframes arrowAnimation {
+    0% {
+        transform: translateX(0%);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
 
 .service-relative {
     position: relative;

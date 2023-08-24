@@ -10,7 +10,7 @@
 
 {% block content %}
     <h1>Услуги</h1>
-    <div class="services">
+    <section class="services">
         <div class="services-list">
           {% for service in service_list %}
           <a href="{{service.name}}" class="service service-relative" color="black">
@@ -23,5 +23,5 @@
           </a>
           {% endfor %}
         </div>
-      </div>
+      </section>
 {% endblock %}
