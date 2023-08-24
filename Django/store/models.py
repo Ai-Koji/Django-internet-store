@@ -2,6 +2,17 @@ from django.db import models
 from images.models import Image
 import os
 
+class Main_slider(models.Model):
+    image = models.ImageField(upload_to="images/")
+    urlTo = models.CharField(max_length=60, blank=True)
+    def __str__(self):
+        return os.path.basename(self.image.name)
+    def get_cells(self): # getting cells for page rendering
+        return {"name": self.name,
+            "image": "/media/images/" + os.path.basename(str(self.image)),
+            "urlTo": self.urlTo
+            }
+            
 class BaseModel(models.Model):
     name = models.CharField(max_length=30)
     render_name = models.CharField(max_length=30)
