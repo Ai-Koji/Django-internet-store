@@ -10,7 +10,7 @@ html {
 }
 
 h1 {
-    font-size: 30pt;
+    font-size: 20pt;
 }
 
 html {
@@ -147,13 +147,6 @@ main {
     padding-left: 2%;
 }
 
-
-@media (max-width:2060px) {
-    .content {
-        width: 100vw;
-    }
-}
-
 /* footer */
 footer {
     width: 1846px;
@@ -220,6 +213,12 @@ footer a {
     color: white;
 }
 
+@media (max-width:2060px) {
+    .content {
+        width: 100vw;
+    }
+}
+
 @media (max-width:1846px) {
     .header-content {
         width: 100%;
@@ -235,8 +234,8 @@ footer a {
     header a {
         color: white;
     }
-    .logo {
-        width: 50%;
+    .header-logo {
+        width: 40%;
         margin: 0 auto;
     }
     .header-urls {
