@@ -1,42 +1,55 @@
 // slider
-
-let prevSlideId = 1, 
-    slideID = 1,
+let currentSlide = 0,
     slides = document.querySelectorAll(".slide"),
-    buttons = document.querySelectorAll('#slide-button');
+    buttons = document.querySelectorAll('.slide-button'),
+    arrows = document.querySelectorAll('.arrow'),
+    autoSlideInterval;
 
-
-// function for change slide with id
-function changeSlide () {
+// Function to change slide
+function changeSlide() {
     for (let index = 0; index < slides.length; index++) {
-        slides[index].style.transform = `translateX(-${100 * (slideID - 1)}%)`
+        slides[index].style.transform = `translateX(-${100 * currentSlide}%)`;
     }
-    buttons[prevSlideId - 1].classList.remove("active-button");
-    prevSlideId = slideID;
-    buttons[prevSlideId - 1].classList.add("active-button");
-    
+    buttons.forEach(button => button.classList.remove("active-button"));
+    buttons[currentSlide].classList.add("active-button");
 }
 
-function changeActiveForButtons() {
-
-}
-
-
-function nextSlide(){
-    slideID++;
-    if (slideID > slides.length)
-        slideID = 1;
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
     changeSlide();
 }
 
-function prevSlide() {    
-    slideID--;
-    if (slideID <= 0)
-        slideID = slides.length;
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
     changeSlide();
 }
 
-function slide(slideId) {
-    slideID = slideId;
+function goToSlide(slideIndex) {
+    currentSlide = slideIndex;
     changeSlide();
 }
+
+// Add event listeners
+arrows.forEach(arrow => arrow.addEventListener('click', event => {
+    if (event.currentTarget.classList.contains('arrow-left')) {
+        prevSlide();
+    } else if (event.currentTarget.classList.contains('arrow-right')) {
+        nextSlide();
+    }
+    stopAutoSlide(); // Остановить автосмену слайдов при нажатии на стрелку
+}));
+
+buttons.forEach((button, index) => button.addEventListener('click', () => {
+    goToSlide(index);
+    stopAutoSlide(); // Остановить автосмену слайдов при нажатии на кнопку
+}));
+
+function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, 5000);
+}
+
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
+
+startAutoSlide(); // Начать автосмену слайдов

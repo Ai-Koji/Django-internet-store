@@ -10,24 +10,21 @@
 
 {% block content %}
         <h4 class="about"><b>"Здоровье животных – ваша страсть, высокое качество оборудования – наше обещание!"</b></h4>
-
         <section class="slider">
             <div class="slides">
-                {% with slide_images|length as num_images %}
-                    {% for slide in all_slides %}
-                        <a href="{{slide.urlTo}}" class="slide">
-                            <img src="{{slide.image}}" alt="">
-                        </a>
-                    {% endfor %}
-                {% endwith %}
-            </div>
-            <div class="slide-buttons">
-                {% for i in num_images %}
-                    <button id="slide-button" onclick="slide({{i}})" class="active-button"><span class=""></span></button>
+                {% for slide in all_slides %}
+                    <a href="{{ slide.urlTo }}" class="slide">
+                        <img src="{{ slide.image }}" alt="">
+                    </a>
                 {% endfor %}
             </div>
-            <button id="arrow-left" onclick="prevSlide()"><img src="/static/images/arrow-left.svg" alt=""></button>
-            <button id="arrow-right" onclick="nextSlide()"><img src="/static/images/arrow-right.svg" alt=""></button>
+            <div class="slide-buttons">
+                {% for _ in all_slides %}
+                    <button class="slide-button"><span></span></button>
+                {% endfor %}
+            </div>
+            <button class="arrow arrow-left"><img src="/static/images/arrow-left.svg" alt=""></button>
+            <button class="arrow arrow-right"><img src="/static/images/arrow-right.svg" alt=""></button>
         </section>
         <h1 class="cards-header">Каталог</h1>
         <section class="cards">
