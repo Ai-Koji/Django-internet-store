@@ -125,7 +125,7 @@ def email_main():
             get_info()
             send_info_to_email()
     except Exception as error: 
-        logging.basicConfig(level=logging.INFO, filename="/var/log/Django/errorLogGmail.log", filemode="a", format="%(asctime)s %(levelname)s %(message)s")
+        logging.basicConfig(level=logging.INFO, filename="/var/log/<appname>/errorLogGmail.log", filemode="a", format="%(asctime)s %(levelname)s %(message)s")
         logging.error(error)
 
 if __name__ == "__main__":

@@ -7,7 +7,8 @@
 - настроить конфиг(config.py)
 - изменить айпи и путь до django приложения в Django.conf
 - изменить путь до django приложения в send_to_mail.conf
-- изменить айпи и домен в nginx 
+- изменить <appname> в send_to_mail.py
+- изменить айпи, домен, путь до приложения и название приложения в логах в nginx 
 - провести миграцию (python3 manage.py migrate)
 - создать суперпользователя (python3 manage.py createsuperuser)
 - создать новый secret_key (
