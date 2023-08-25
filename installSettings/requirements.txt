@@ -4,3 +4,4 @@ subprocess32
 python-telegram-bot
 django_ratelimit
 Pillow
+gunicorn
