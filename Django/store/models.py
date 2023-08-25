@@ -76,7 +76,7 @@ class Service(BaseModel):
     mini_description = models.TextField(blank=True) # text
     def to_dict(self): # getting cells for page rendering
         return {"name": self.name, 
-                "image": self.image.image.url,
+                "image": "/media/images/" + os.path.basename(str(self.image)),
                 "render_name": self.render_name,
                 "service_description": self.service_description,
                 "mini_description": self.mini_description,
