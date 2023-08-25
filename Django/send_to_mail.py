@@ -46,10 +46,9 @@ from form.models import *
 def get_info():
     global offer, Service_offer, contact, question
     offer = [item for item in Offer.objects.all() if item.send_to_mail == True] 
-    Service_offer = [item for item in ServiceOffer.objects.all() if item.send_to_mail == False]
-    contact = [item for item in Contact.objects.all() if item.send_to_mail == False]
-    question = [item for item in Question.objects.all() if item.send_to_mail == False]
-     
+    Service_offer = [item for item in ServiceOffer.objects.all() if item.send_to_mail == True]
+    contact = [item for item in Contact.objects.all() if item.send_to_mail == True]
+    question = [item for item in Question.objects.all() if item.send_to_mail == True]
 
 def send_info_to_email():
     global smtp
@@ -124,7 +123,7 @@ def email_main():
         while True:
             get_info()
             send_info_to_email()
-    except Exception as error: 
+    except Exception as error:
         logging.basicConfig(level=logging.INFO, filename="/var/log/<appname>/errorLogGmail.log", filemode="a", format="%(asctime)s %(levelname)s %(message)s")
         logging.error(error)
 
