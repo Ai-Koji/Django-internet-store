@@ -10,57 +10,53 @@ fi
 #install packages
 echo -e "install apps \n"
 sudo apt update -y   
-sudo apt install python3 python3-pip nginx python3-venv libssl-dev -y   
+sudo apt install python3 python3-pip nginx python3-venv libssl-dev supervisor -y 
 sudo apt install make -y   
 
+# move Django
+sudo cp -r Django <path>
+
 #install venv and activate 
+python3 -m venv <path to Djanho>/venv
+source <path to Django>/venv/bin/activate
 echo -e "creat python venv \n"
 echo -e "install modules for python \n"   
 pip install --upgrade pip
 pip install -r  installSettings/requirements.txt
 
-#Move startDjango.sh script
-sudo cp installSettings/startDjango.sh /etc/
-sudo chmod 744 /etc/startDjango.sh
-
-#Move startMail.sh script
-sudo cp installSettings/startMailScript.sh /etc/
-sudo chmod 744 /etc/startMailScript.sh
-
-#Move Django
-sudo cp -r Django /var/www/
+#move static for nginx
+echo -e "move static for nginx \n"
 
 #change root
-sudo chmod +wrx /var/www/Django     
+sudo chmod +wrx <path to Django>
 
-#сonfigure systemd
-echo -e "configure systemd \n"
-sudo cp installSettings/startDjango.service /lib/systemd/system/startDjango.service 
-sudo systemctl daemon-reload   
-sudo systemctl enable startDjango.service --now   
-sudo systemctl start startDjango.service   
+# configure supervisor
+sudo cp installSettings/Django.conf /etc/supervisor/conf.d/
+sudo cp installSettings/send_to_mail.conf /etc/supervisor/conf.d/
 
-echo -e "configure systemd \n"
-sudo cp installSettings/startDjango.service /lib/systemd/system/startMailScript.service 
-sudo systemctl daemon-reload   
-sudo systemctl enable startMailScript.service --now   
-sudo systemctl start startMailScript.service   
+sudo supervisorctl reread
+sudo supervisorctl update
 
-#configure nginx
+sudo supervisorctl start Django
+sudo supervisorctl start send
+
+# configure nginx
 echo -e "configure nginx \n"   
 sudo cp installSettings/nginx.conf /etc/nginx/   
 
 sudo systemctl reload nginx.service
 
 # create files for log
-sudo mkdir /var/log/Django
-sudo touch /var/log/Django/errorLogGmail.log
-sudo touch /var/log/Django/nginxErrors.log   
-sudo touch /var/log/Django/nginxAccess.log   
+sudo mkdir /var/log/<appname>
+sudo touch /var/log/<appname>/errorLogGmail.log
+sudo touch /var/log/<appname>/nginxErrors.log   
+sudo touch /var/log/<appname>/nginxAccess.log     
+sudo touch /var/log/<appname>/gunicorn.log 
 
-sudo chmod ugo+wrx /var/log/Django/errorLogGmail.log
-sudo chmod ugo+wrx /var/log/Django/nginxErrors.log   
-sudo chmod ugo+wrx /var/log/Django/nginxAccess.log   
+sudo chmod ugo+wrx /var/log/<appname>/errorLogGmail.log
+sudo chmod ugo+wrx /var/log/<appname>/nginxErrors.log   
+sudo chmod ugo+wrx /var/log/<appname>/nginxAccess.log   
+sudo chmod ugo+wrx /var/log/<appname>/gunicorn.log   
 
 cd /tmp   
 wget http://nginx.org/download/nginx-1.25.1.tar.gz   

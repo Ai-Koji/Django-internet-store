@@ -5,7 +5,8 @@
 что нужно перед запуском
 - зарегистрировать домен на vps
 - настроить конфиг(config.py)
-- изменить айпи в startDjango.sh
+- изменить айпи и путь до django приложения в Django.conf
+- изменить путь до django приложения в send_to_mail.conf
 - изменить айпи и домен в nginx 
 - провести миграцию (python3 manage.py migrate)
 - создать суперпользователя (python3 manage.py createsuperuser)
